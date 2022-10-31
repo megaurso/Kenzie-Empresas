@@ -215,6 +215,7 @@ header {
     #divContent {
         display: flex;
         flex-direction: column;
+        height: 631px;
     }
 
     .enterpriseName {
