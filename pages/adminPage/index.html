@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/globalStyles.css">
+    <link rel="stylesheet" href="/pages/adminPage/index.css">
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <main>
+        <header>
+            <div class="headerLogo">
+                <img src="/assets/imgs/Ellipse 1.svg" alt="iconLogo">
+                <h2 id="title">Kenzie Empresas</h2>
+            </div>
+            <a id="logout" href="/index.html">Logout</a>
+        </header>
+        <section>
+            <div class="headerDepartments">
+                <h1 class="departments">Departamentos</h1>
+                <select>
+                    <option>Selecionar Empresa</option>
+                </select>
+                <button id="creatDepartments">+&nbsp;&nbsp; Criar</button>
+            </div>
+            <ul id="ulDepartments"></ul>
+        </section>
+        <h1 class="userSection">Usuários cadastrados</h1>
+        <section class="sectionUsers">
+            <ul id="ulRegisters"></ul>
+        </section>
+    </main>
+    <script type="module" src="/pages/adminPage/index.js"></script>
+</body>
+</html>

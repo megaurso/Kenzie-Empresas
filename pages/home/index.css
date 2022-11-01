@@ -72,6 +72,9 @@ header {
     padding: 20px;
 }
 
+ul{
+    list-style: none;
+}
 
 .mySelectHome {
     margin-top: 15px;

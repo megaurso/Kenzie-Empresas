@@ -133,6 +133,7 @@ select{
     color: var(--color-white);
     border: none;
     font-size: var(--font-size-4);
+    cursor: pointer;
 }
 
 #return{
