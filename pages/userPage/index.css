@@ -1,0 +1,107 @@
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+}
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 800px;
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    height: 80px;
+}
+
+.headerLogo{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#title{
+    color: var(--color-black);
+    font-weight: 700;
+}
+
+#logout{
+    text-decoration: none;
+    border: 1px solid var(--color-blue);
+    color: var(--color-blue);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    width: 80px;
+    font-size: var(--font-size-4);
+}
+
+#sectionUser{
+    margin-top: 30px;
+    width: 55%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.userName{
+    padding-right: 900px;
+    font-weight: 700;
+    font-size: var(--font-size-2);
+}
+
+.divInfo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 218px;
+}
+
+.email{
+    font-size: var(--font-size-4);
+    font-weight: 400;
+}
+
+.capitalize{
+    text-transform: capitalize;
+    font-size: var(--font-size-4);
+    font-weight: 400;
+
+}
+
+.work{
+    text-transform: capitalize;
+    font-weight: 400;
+    font-size: var(--font-size-4);
+}
+
+
+.editUser{
+    display: flex;
+    margin-bottom: 25px;
+    cursor: pointer;
+}
+
+#sectionJob{
+    margin-top: 40px;
+    width: 55%;
+    border: 1px solid #A8A8A8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F8F8F8;
+    height: 500px;
+}
+
+
+#noJob{
+    font-weight: 700;
+    font-size: var(--font-size-1);
+}

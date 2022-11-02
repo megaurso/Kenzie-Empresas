@@ -52,7 +52,7 @@ async function login(body) {
             setTimeout(() => {
                 window.location.replace("/pages/adminPage/index.html")
             }, 2000)
-        } else {
+        } else if (isAdmin.is_admin == false) {
             setTimeout(() => {
                 window.location.replace("/pages/userPage/index.html")
             }, 2000)
@@ -116,23 +116,41 @@ async function listAllUsers() {
     }
 }
 
-async function enterpriseDepartment(id){
+async function enterpriseDepartment(id) {
     const token = getLocalStorage()
 
-    try{
-        const request = await fetch(`${baseUrl}departments/${id}`,{
-            method:"GET",
-            headers:{
+    try {
+        const request = await fetch(`${baseUrl}departments/${id}`, {
+            method: "GET",
+            headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token.token}`
             }
         })
         const response = await request.json()
         return response
-    }catch(error){
+    } catch (error) {
         console.log(error)
     }
 }
+
+async function getInfoLoggedUser() {
+    const token = getLocalStorage()
+    try {
+        const request = await fetch(`${baseUrl}users/profile`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token.token}`
+            }
+        })
+        const response = await request.json()
+        return response
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 
 
 
@@ -144,5 +162,6 @@ export {
     login,
     listDepartments,
     listAllUsers,
-    enterpriseDepartment
+    enterpriseDepartment,
+    getInfoLoggedUser
 }

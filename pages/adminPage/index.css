@@ -9,8 +9,11 @@ main{
 header{
     display: flex;
     align-items: center;
-    margin-top: 20px;
+    justify-content: center;
     gap: 800px;
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    height: 80px;
 }
 
 .headerLogo{

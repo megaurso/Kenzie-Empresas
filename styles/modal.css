@@ -1,0 +1,104 @@
+.modalBackground{
+    background-color: rgba(70, 35, 167, 0.13);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.modalContainer{
+    background-color: var(--color-white);
+    padding: 40px;
+    min-height: 30%;
+    position: relative;
+}
+
+.modalClose{
+    padding: 40px;
+    font-size: 30px;
+    color: var(--color-black);
+    background:none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    font-size: 15px;
+    border: none;
+}
+
+.modalMiniBackground{
+    display: flex;
+}
+
+.modalMiniContainer{
+    border: 1px solid black;
+}
+
+.containerModal{
+    position: absolute;
+    top: 87px;
+    right: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: center;
+    padding: 5px;
+    gap: 10px;
+    border-radius: 4px;
+}
+
+.formBase{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: center;
+    gap: 10px;
+}
+
+#editUser{
+    color: var(--color-black);
+    font-size: var(--font-size-1);
+    font-weight: 700;
+    line-height: 60px;
+}
+
+.inputsEdit{
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    width: 400px;
+    height: 52px;
+}
+.inputsEdit::placeholder{
+    font-weight: 400;
+    font-size: var(--font-size-4);
+    padding-left: 15px;
+}
+
+#editUserBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 52px;
+    background-color: var(--color-blue);
+    color: var(--color-white);
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

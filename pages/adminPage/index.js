@@ -1,21 +1,15 @@
-import { getLocalStorage } from "../../scripts/localStorage.js"
-import { enterpriseDepartment, listAllUsers, listDepartments, listEnterprise } from "../../scripts/requestsApi.js"
+import {  listAllUsers, listDepartments, listEnterprise } from "../../scripts/requestsApi.js"
+import { verifyPermission } from "../../scripts/verifyPermission.js"
 const logout = document.querySelector("#logout")
 const departments = await listDepartments()
 const users = await listAllUsers()
-
+verifyPermission()
 
 logout.addEventListener("click", () => {
     localStorage.removeItem("token")
 })
-const verifyPermission = () => {
-    const token = getLocalStorage()
 
-    if (token == "") {
-        window.location.replace("/index.html")
-    }
 
-}
 verifyPermission()
 
 function creatDepartmentsList() {
