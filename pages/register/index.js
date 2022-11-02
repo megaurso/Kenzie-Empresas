@@ -1,17 +1,5 @@
 import { registerUser } from "../../scripts/requestsApi.js"
 
-const divDropDown = document.querySelector("#dropDown")
-const imgDropDown = document.querySelector("#imgDropDown")
-
-btnDropDown.addEventListener("click", () => {
-    divDropDown.classList.toggle("active")
-    imgDropDown.src = "/assets/imgs/Vector.png"
-    if(divDropDown.classList.contains("active")){
-        imgDropDown.src = "/assets/imgs/Vector.png"
-    }else{
-        imgDropDown.src = "/assets/imgs/Vector.svg"
-    }
-})
 
 const register = () => {
     const form = document.querySelector("form")

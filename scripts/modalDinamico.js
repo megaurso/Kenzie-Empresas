@@ -25,21 +25,6 @@ async function openModal(children){
 }
 
 
-async function openExitModal(elem){
-    
-    const backgroundMiniContainer = document.createElement("section")
-    const mainMiniContainer = document.createElement("section")
-
-
-    backgroundMiniContainer.classList.add("modalMiniBackground")
-    mainMiniContainer.classList.add("modalMiniContainer")
-
-    
-    mainMiniContainer.append(elem)
-    body.appendChild(backgroundMiniContainer)
-}
-
 export{
     openModal,
-    openExitModal
 }

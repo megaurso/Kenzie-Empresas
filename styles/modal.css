@@ -1,4 +1,4 @@
-.modalBackground{
+.modalBackground {
     background-color: rgba(70, 35, 167, 0.13);
     display: flex;
     justify-content: center;
@@ -10,48 +10,29 @@
     height: 100%;
 }
 
-.modalContainer{
+.modalContainer {
     background-color: var(--color-white);
     padding: 40px;
     min-height: 30%;
     position: relative;
+    width: auto;
 }
 
-.modalClose{
+.modalClose {
     padding: 40px;
     font-size: 30px;
     color: var(--color-black);
-    background:none;
+    background: none;
     position: absolute;
     top: 0;
     right: 0;
     cursor: pointer;
-    font-size: 15px;
+    font-size: 25px;
     border: none;
 }
 
-.modalMiniBackground{
-    display: flex;
-}
 
-.modalMiniContainer{
-    border: 1px solid black;
-}
-
-.containerModal{
-    position: absolute;
-    top: 87px;
-    right: 480px;
-    display: flex;
-    flex-direction: column;
-    align-items: baseline;
-    justify-content: center;
-    padding: 5px;
-    gap: 10px;
-    border-radius: 4px;
-}
-
-.formBase{
+.formBase {
     display: flex;
     flex-direction: column;
     align-items: baseline;
@@ -59,25 +40,27 @@
     gap: 10px;
 }
 
-#editUser{
+#editUser {
     color: var(--color-black);
     font-size: var(--font-size-1);
     font-weight: 700;
     line-height: 60px;
 }
 
-.inputsEdit{
+.inputsEdit {
     border: 1px solid rgba(0, 0, 0, 0.3);
     width: 400px;
     height: 52px;
-}
-.inputsEdit::placeholder{
-    font-weight: 400;
-    font-size: var(--font-size-4);
     padding-left: 15px;
 }
 
-#editUserBtn{
+.inputsEdit::placeholder {
+    font-weight: 400;
+    font-size: var(--font-size-4);
+
+}
+
+#editUserBtn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -90,15 +73,62 @@
     cursor: pointer;
 }
 
+.editDivDelete {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+}
 
+#deleteUserTitle {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: 700;
+    font-size: var(--font-size-1);
+    margin-bottom: 30px;
 
+}
 
+#btnDeleteUser {
+    width: 480px;
+    height: 40px;
+    background-color: var(--color-green);
+    border: none;
+    color: var(--color-white);
+    cursor: pointer;
+}
 
+.editUsersContainer {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 
+#editTitle {
+    font-size: var(--font-size-1);
+    font-weight: 700;
+    line-height: 54px;
+}
 
+.selectKindOfWork {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    width: 400px;
+    height: 40px;
+    color: rgba(0, 0, 0, 0.5);
+    border-radius: 0%;
+}
 
-
-
-
-
-
+#btnEditAdmin {
+    border: none;
+    border-radius: 0%;
+    background-color: var(--color-blue);
+    color: var(--color-white);
+    width: 400px;
+    height: 40px;
+    cursor: pointer;
+}
