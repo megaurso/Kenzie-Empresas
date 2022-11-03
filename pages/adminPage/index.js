@@ -67,7 +67,8 @@ function creatRegisterUser() {
         level.innerText = elem.professional_level
         departments.forEach((depart) => {
             if (elem.department_uuid == null) {
-                nameCompany.innerText = "Desempregado"
+                nameCompany.innerText = "desempregado"
+                nameCompany.classList.add("hidden")
             } else if (elem.department_uuid == depart.uuid) {
                 nameCompany.innerText = depart.companies.name
             }
