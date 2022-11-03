@@ -47,7 +47,6 @@ function creatUserInfo() {
 } creatUserInfo()
 
 function renderContentJob() {
-    const noJob = document.querySelector("#noJob")
     const section = document.querySelector("#sectionJob")
     const companyAndDepartment = document.createElement("div")
     const nameCompany = document.createElement("h2")
@@ -58,7 +57,6 @@ function renderContentJob() {
     const departments = sameEnterprise.departments
 
     companyAndDepartment.classList.add("divNameJob")
-    noJob.classList.add("hidden")
     nameCompany.classList.add("names")
     nameDepartment.classList.add("names")
 
@@ -92,3 +90,12 @@ function renderContentJob() {
     section.append(companyAndDepartment,ul)
     companyAndDepartment.append(nameCompany, nameDepartment)
 } renderContentJob()
+
+function noJobUser(){
+    const sectionJob = document.querySelector("#sectionJob")
+    const h1 = document.querySelector("#noJob")
+    h1.id = "noJob"
+    h1.innerText = "Você ainda não foi contratado"
+
+    sectionJob.appendChild(h1)
+}noJobUser()

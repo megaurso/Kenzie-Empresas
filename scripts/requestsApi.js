@@ -156,7 +156,6 @@ async function getInfoLoggedUser() {
     }
 }
 
-
 async function editUserInfo(body) {
     const token = getLocalStorage()
 
@@ -243,7 +242,41 @@ async function departmentsOfSameEnterprise(){
     }
 }
 
+async function creatNewDepartment(body){
+    const token = getLocalStorage()
+    try{
+        const request = await fetch(`${baseUrl}departments`,{
+            method:"POST",
+            headers:{
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token.token}`
+            },
+            body: JSON.stringify(body)
+        })
+        const response = await request.json()
+        return response
+    }catch(error){
+        console.log(error)
+    }
+}
 
+async function editDepartment(body,id){
+    const token = getLocalStorage()
+    try{
+        const request = await fetch(`${baseUrl}departments/${id}`,{
+            method:"PATCH",
+            headers:{
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token.token}`
+            },
+            body: JSON.stringify(body)
+        })
+        const response = await request.json()
+        return response
+    }catch(error){
+        console.log(error)
+    }
+}
 export {
     listSectores,
     listEnterprise,
@@ -258,5 +291,7 @@ export {
     deleteUser,
     editUsers,
     listCoworkers,
-    departmentsOfSameEnterprise
+    departmentsOfSameEnterprise,
+    creatNewDepartment,
+    editDepartment
 }

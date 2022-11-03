@@ -1,5 +1,6 @@
+import { creatANewDepartment, editDepartmentDescription } from "../../scripts/forms.js"
 import { openModal } from "../../scripts/modalDinamico.js"
-import { deleteUser, editUsers, listAllUsers, listDepartments, listEnterprise } from "../../scripts/requestsApi.js"
+import { deleteUser, editUsers, enterpriseDepartment, listAllUsers, listDepartments, listEnterprise } from "../../scripts/requestsApi.js"
 import toast from "../../scripts/toasts.js"
 import { verifyPermission } from "../../scripts/verifyPermission.js"
 const logout = document.querySelector("#logout")
@@ -13,6 +14,67 @@ logout.addEventListener("click", () => {
 function creatDepartmentsList() {
     const ul = document.querySelector("#ulDepartments")
     departments.forEach((element) => {
+        const li = document.createElement("li")
+        const h2 = document.createElement("h2")
+        const description = document.createElement("p")
+        const nameCompany = document.createElement("p")
+        const div = document.createElement("div")
+        const btnViewDepartments = document.createElement("img")
+        const btnEdiDepartments = document.createElement("img")
+        const btnDeleteDepartments = document.createElement("img")
+        
+        li.classList.add("liDepartments")
+        h2.classList.add("titleDepartments")
+        description.classList.add("descriptionDepartments")
+        nameCompany.classList.add("nameCompany")
+        div.classList.add("containerImgs")
+        
+        h2.innerText = element.name
+        description.innerText = element.description
+        nameCompany.innerText = element.companies.name
+        btnViewDepartments.src = "/assets/imgs/Vector (1).png"
+        btnEdiDepartments.src = "/assets/imgs/Vector (2).png"
+        btnDeleteDepartments.src = "/assets/imgs/Vector (3).png"
+
+        btnEdiDepartments.addEventListener("click", async()=>{
+            const form = await editDepartmentDescription(element.uuid)
+            openModal(form)
+        })
+
+        div.append(btnViewDepartments, btnEdiDepartments, btnDeleteDepartments)
+        li.append(h2, description, nameCompany, div)
+        ul.appendChild(li)
+
+    });
+}
+
+ 
+async function selectOptions() {
+    let select = document.querySelector("select")
+    const enterprises = await listEnterprise()
+    creatDepartmentsList()
+    enterprises.forEach((elem) => {
+        const options = document.createElement("option")
+        options.innerText = elem.name
+        options.value = elem.uuid
+  
+        select.append(options)
+    })
+    select.addEventListener("change", async (event) => {
+        const value = event.target.value
+        const ul = document.querySelector("#ulDepartments")
+        ul.innerHTML = ""
+        const filter = await enterpriseDepartment(value)
+        if(value == "Selecionar Empresa"){
+            creatDepartmentsList()
+        }
+        RenderSelectOptions(filter)
+    })
+}selectOptions()
+
+function RenderSelectOptions(companies) {
+    const ul = document.querySelector("#ulDepartments")
+    companies.forEach((element) => {
         const li = document.createElement("li")
         const h2 = document.createElement("h2")
         const description = document.createElement("p")
@@ -36,13 +98,20 @@ function creatDepartmentsList() {
         btnDeleteDepartments.src = "/assets/imgs/Vector (3).png"
 
 
-
         div.append(btnViewDepartments, btnEdiDepartments, btnDeleteDepartments)
         li.append(h2, description, nameCompany, div)
         ul.appendChild(li)
-
     });
 }
+
+
+async function newDepartment(){
+    const btn = document.querySelector("#creatDepartments")
+    const view = await creatANewDepartment()
+    btn.addEventListener("click",()=>{
+        openModal(view)
+    })
+}newDepartment()
 
 function creatRegisterUser() {
     const ul = document.querySelector("#ulRegisters")
@@ -115,7 +184,7 @@ function creatRegisterUser() {
                     }
                 })
                 await editUsers(edit, elem.uuid)
-                toast("Usuário editado","Usuário teve seu tipo de trabalho e nivel profissional alterado")
+                toast("Usuário editado", "Usuário teve seu tipo de trabalho e nivel profissional alterado")
                 backgroundContainerModal.remove()
                 setTimeout(() => {
                     location.reload()
@@ -155,65 +224,5 @@ function creatRegisterUser() {
         li.append(h2, level, nameCompany, div)
         ul.appendChild(li)
     })
-}
-creatRegisterUser()
+}creatRegisterUser()
 
-async function selectOptions() {
-    let select = document.querySelector("select")
-    const enterprises = await listEnterprise()
-    creatDepartmentsList()
-    enterprises.forEach((elem) => {
-        const options = document.createElement("option")
-
-        options.innerText = elem.description
-        options.value = elem.description
-
-        // departments.forEach((departs) => {
-        //     select.addEventListener("change", async () => {
-        //         const value = select.value
-        //         const ul = document.querySelector("#ulDepartments")
-        //         ul.innerHTML = ""
-        //         const filter = await enterpriseDepartment(value)
-        //         console.log(filter)
-        //         RenderSelectOptions(filter)
-        //     })
-
-        // })
-        select.append(options)
-    })
-}
-selectOptions()
-
-// function RenderSelectOptions(companies) {
-//     const ul = document.querySelector("#ulDepartments")
-//     companies.forEach((element) => {
-//         const li = document.createElement("li")
-//         const h2 = document.createElement("h2")
-//         const description = document.createElement("p")
-//         const nameCompany = document.createElement("p")
-//         const div = document.createElement("div")
-//         const btnViewDepartments = document.createElement("img")
-//         const btnEdiDepartments = document.createElement("img")
-//         const btnDeleteDepartments = document.createElement("img")
-
-//         li.classList.add("liDepartments")
-//         h2.classList.add("titleDepartments")
-//         description.classList.add("descriptionDepartments")
-//         nameCompany.classList.add("nameCompany")
-//         div.classList.add("containerImgs")
-
-//         h2.innerText = element.name
-//         description.innerText = element.description
-//         nameCompany.innerText = element.companies.name
-//         btnViewDepartments.src = "/assets/imgs/Vector (1).png"
-//         btnEdiDepartments.src = "/assets/imgs/Vector (2).png"
-//         btnDeleteDepartments.src = "/assets/imgs/Vector (3).png"
-
-
-
-//         div.append(btnViewDepartments, btnEdiDepartments, btnDeleteDepartments)
-//         li.append(h2, description, nameCompany, div)
-//         ul.appendChild(li)
-
-//     });
-// }

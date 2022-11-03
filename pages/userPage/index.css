@@ -35,8 +35,8 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 5px;
-    width: 80px;
+    padding: 10px;
+    width: 100px;
     font-size: var(--font-size-4);
 }
 
@@ -109,11 +109,10 @@ header {
 #noJob {
     font-weight: 700;
     font-size: var(--font-size-1);
-}
-
-.hidden {
-    /* visibility: hidden; */
-    /* display: none; */
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .divNameJob {

@@ -10,7 +10,7 @@ header{
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 800px;
+    gap: 40%;
     width: 100%;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     height: 80px;
@@ -35,8 +35,8 @@ header{
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 5px;
-    width: 80px;
+    padding: 10px;
+    width: 100px;
     font-size: var(--font-size-4);
 }
 
@@ -51,9 +51,10 @@ section{
 .headerDepartments{
     margin-top: 30px;
     display: flex;
+    gap: 8%;
     justify-content: center;
-    gap: 240px;
     align-items: center;
+    width: 100%;
 }
 
 .departments{
@@ -65,8 +66,8 @@ select{
     border-radius: 15px;
     font-size: var(--font-size-4);
     height: 28px;
-    width: 230px;
     padding-left: 30px;
+    margin-right: 130px;
 }
 
 #creatDepartments{
@@ -85,7 +86,7 @@ select{
 }
 
 ul{
-
+    padding-top: 20px;
     background-color: #F8F8F8;;
     margin-top: 40px;
     list-style: none;
@@ -96,7 +97,7 @@ ul{
     flex-wrap: wrap;
     overflow-y: scroll;
     height: 270px;
-    width: 50%;
+    width: 56%;
 }
 
 ::-webkit-scrollbar{
@@ -109,7 +110,7 @@ ul{
 
 li{
     background-color: var(--color-white);
-    width: 40%;
+    width: 45%;
     padding-left: 10px;
     border-bottom: 1px solid var(--color-blue);
     margin-bottom: 40px;
