@@ -207,6 +207,42 @@ async function editUsers(body, id) {
     }
 }
 
+async function listCoworkers(){
+    const token = getLocalStorage()
+
+    try{
+        const request = await fetch(`${baseUrl}users/departments/coworkers`,{
+            method:"GET",
+            headers:{
+                "Content-Type":"application.json",
+                "Authorization":`Bearer ${token.token}`
+            }
+        })
+        const response = await request.json()
+        return response
+    }catch(error){
+        console.log(error)
+    }
+}
+
+async function departmentsOfSameEnterprise(){
+    const token = getLocalStorage()
+
+    try{
+        const request = await fetch(`${baseUrl}users/departments`,{
+            method:"GET",
+            headers:{
+                "Content-Type":"application.json",
+                "Authorization":`Bearer ${token.token}`
+            }
+        })
+        const response = await request.json()
+        return response
+    }catch(error){
+        console.log(error)
+    }
+}
+
 
 export {
     listSectores,
@@ -220,5 +256,7 @@ export {
     getInfoLoggedUser,
     editUserInfo,
     deleteUser,
-    editUsers
+    editUsers,
+    listCoworkers,
+    departmentsOfSameEnterprise
 }

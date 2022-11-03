@@ -102,7 +102,9 @@ function creatRegisterUser() {
             `)
 
             divContainer.addEventListener("submit", async (event) => {
+                event.preventDefault()
                 const selects = [...event.target]
+                let backgroundContainerModal = document.querySelector(".modalBackground")
 
                 const edit = {}
 
@@ -112,7 +114,11 @@ function creatRegisterUser() {
                     }
                 })
                 await editUsers(edit, elem.uuid)
+                toast("Usuário editado","Usuário teve seu tipo de trabalho e nivel profissional alterado")
                 backgroundContainerModal.remove()
+                setTimeout(() => {
+                    location.reload()
+                }, 1500)
             })
             return divContainer
         }

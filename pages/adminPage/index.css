@@ -96,7 +96,7 @@ ul{
     flex-wrap: wrap;
     overflow-y: scroll;
     height: 270px;
-    width: 50vw;
+    width: 50%;
 }
 
 ::-webkit-scrollbar{
