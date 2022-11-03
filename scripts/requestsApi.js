@@ -1,6 +1,5 @@
 import { getLocalStorage } from "./localStorage.js"
 import toast from "./toasts.js"
-let backgroundContainerModal = document.querySelector(".modalBackground")
 
 const baseUrl = "http://localhost:6278/"
 
@@ -277,6 +276,37 @@ async function editDepartment(body,id){
         console.log(error)
     }
 }
+
+async function deleteDepart(id){
+    const token = getLocalStorage()
+    await fetch(`${baseUrl}departments/${id}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token.token}`
+        }
+    })
+}
+
+async function contractUser(body){
+    const token = getLocalStorage()
+    try{
+        const request = await fetch(`${baseUrl}departments/hire/`,{
+            method:"PATCH",
+            headers:{
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token.token}`
+            },
+            body: JSON.stringify(body)
+        })
+        const response = await request.json()
+        return response
+    }catch(error){
+        console.log(error)
+    }
+}
+
+
 export {
     listSectores,
     listEnterprise,
@@ -293,5 +323,7 @@ export {
     listCoworkers,
     departmentsOfSameEnterprise,
     creatNewDepartment,
-    editDepartment
+    editDepartment,
+    deleteDepart,
+    contractUser
 }

@@ -27,7 +27,7 @@ function creatUserInfo() {
     kindOfWork.classList.add("work")
     editUser.classList.add("editUser")
 
-
+    console.log(userInfo)
     userName.innerText = userInfo.username
     email.innerText = `Email:${userInfo.email}`
     cargo.innerText = userInfo.professional_level
@@ -40,6 +40,11 @@ function creatUserInfo() {
         openModal(view)
     })
 
+    if(userInfo.department_uuid == null){
+        noJobUser()
+    }else{
+        renderContentJob()
+    }
 
 
     divInfo.append(email, cargo, kindOfWork, editUser)
@@ -89,7 +94,7 @@ function renderContentJob() {
 
     section.append(companyAndDepartment,ul)
     companyAndDepartment.append(nameCompany, nameDepartment)
-} renderContentJob()
+} 
 
 function noJobUser(){
     const sectionJob = document.querySelector("#sectionJob")
@@ -98,4 +103,4 @@ function noJobUser(){
     h1.innerText = "Você ainda não foi contratado"
 
     sectionJob.appendChild(h1)
-}noJobUser()
+}

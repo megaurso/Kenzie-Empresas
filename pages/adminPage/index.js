@@ -1,4 +1,4 @@
-import { creatANewDepartment, editDepartmentDescription } from "../../scripts/forms.js"
+import { creatANewDepartment, deleteMyDepart, editDepartmentDescription, viewDepart } from "../../scripts/forms.js"
 import { openModal } from "../../scripts/modalDinamico.js"
 import { deleteUser, editUsers, enterpriseDepartment, listAllUsers, listDepartments, listEnterprise } from "../../scripts/requestsApi.js"
 import toast from "../../scripts/toasts.js"
@@ -22,7 +22,7 @@ function creatDepartmentsList() {
         const btnViewDepartments = document.createElement("img")
         const btnEdiDepartments = document.createElement("img")
         const btnDeleteDepartments = document.createElement("img")
-        
+
         li.classList.add("liDepartments")
         h2.classList.add("titleDepartments")
         description.classList.add("descriptionDepartments")
@@ -35,10 +35,22 @@ function creatDepartmentsList() {
         btnViewDepartments.src = "/assets/imgs/Vector (1).png"
         btnEdiDepartments.src = "/assets/imgs/Vector (2).png"
         btnDeleteDepartments.src = "/assets/imgs/Vector (3).png"
+ 
+        btnViewDepartments.addEventListener("click", async()=>{
+            const view = await viewDepart(element)
+            openModal(view)
+            
+        })
 
         btnEdiDepartments.addEventListener("click", async()=>{
             const form = await editDepartmentDescription(element.uuid)
             openModal(form)
+        })
+
+        btnDeleteDepartments.addEventListener("click",async ()=>{
+            const del = await deleteMyDepart(element.uuid,element.name)
+            openModal(del)
+            
         })
 
         div.append(btnViewDepartments, btnEdiDepartments, btnDeleteDepartments)
@@ -97,6 +109,22 @@ function RenderSelectOptions(companies) {
         btnEdiDepartments.src = "/assets/imgs/Vector (2).png"
         btnDeleteDepartments.src = "/assets/imgs/Vector (3).png"
 
+        btnViewDepartments.addEventListener("click", async()=>{
+            const view = await viewDepart(element)
+            openModal(view)
+            
+        })
+
+        btnEdiDepartments.addEventListener("click", async()=>{
+            const form = await editDepartmentDescription(element.uuid)
+            openModal(form)
+        })
+
+        btnDeleteDepartments.addEventListener("click",async ()=>{
+            const del = await deleteMyDepart(element.uuid,element.name)
+            openModal(del)
+            
+        })
 
         div.append(btnViewDepartments, btnEdiDepartments, btnDeleteDepartments)
         li.append(h2, description, nameCompany, div)
