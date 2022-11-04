@@ -1,4 +1,4 @@
-import { creatNewDepartment, deleteDepart, editDepartment, editUserInfo, listAllUsers, listDepartments, listEnterprise } from "./requestsApi.js"
+import { creatNewDepartment, deleteDepart, deleteOneUser, editDepartment, editUserInfo, listAllUsers, listDepartments, listEnterprise } from "./requestsApi.js"
 
 let backgroundContainerModal = document.querySelector(".modalBackground")
 
@@ -108,6 +108,10 @@ const viewDepart = async (element) => {
             level.innerText = elem.professional_level
             companyName.innerText = element.companies.name
             btn.innerText = "Desligar"
+
+            btn.addEventListener("click",()=>{
+                deleteOneUser(elem.uuid) 
+            })
 
             divBtn.append(btn)
             lis.append(h3,level,companyName,divBtn)

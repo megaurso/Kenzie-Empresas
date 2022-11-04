@@ -306,6 +306,17 @@ async function contractUser(body){
     }
 }
 
+async function deleteOneUser(id){
+    const token = getLocalStorage()
+    await fetch(`${baseUrl}admin/delete_user/${id}`,{
+        method:"DELETE",
+        headers:{
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token.token}`
+        }
+    })
+}
+
 export {
     listSectores,
     listEnterprise,
@@ -324,5 +335,6 @@ export {
     creatNewDepartment,
     editDepartment,
     deleteDepart,
-    contractUser
+    contractUser,
+    deleteOneUser
 }
