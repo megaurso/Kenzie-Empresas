@@ -27,7 +27,6 @@ function creatUserInfo() {
     kindOfWork.classList.add("work")
     editUser.classList.add("editUser")
 
-    console.log(userInfo)
     userName.innerText = userInfo.username
     email.innerText = `Email:${userInfo.email}`
     cargo.innerText = userInfo.professional_level
@@ -76,7 +75,6 @@ function renderContentJob() {
     coworkers.forEach((elem) => {
         const users = elem.users
         users.forEach((usu) => {
-            console.log(users)
             const li = document.createElement("li")
             const h3 = document.createElement("h3")
             const span = document.createElement("span")

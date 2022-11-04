@@ -1,5 +1,6 @@
 import { contractUser, creatNewDepartment, deleteDepart, deleteOneUser, editDepartment, editUserInfo, listAllUsers, listDepartments, listEnterprise, outOfWWork } from "./requestsApi.js"
-import toast from "./toasts.js"
+import { toast } from "./toasts.js"
+
 
 let backgroundContainerModal = document.querySelector(".modalBackground")
 

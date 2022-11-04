@@ -1,5 +1,5 @@
 import { getLocalStorage } from "./localStorage.js"
-import toast from "./toasts.js"
+import { toast, toastError } from "./toasts.js"
 
 const baseUrl = "http://localhost:6278/"
 
@@ -60,14 +60,15 @@ async function login(body) {
             setTimeout(() => {
                 window.location.replace("/pages/userPage/index.html")
             }, 2000)
+        }else{
+            toastError("Algo deu errado","Verifique seu email ou senha e tente novamente")
         }
 
     } catch (error) {
-        console.log("error")
+        toastError("Algo deu errado","Verifique seu email ou senha e tente novamente")
         setTimeout(() => {
             window.location.replace("/pages/register/index.html")
         }, 2000)
-        return error
     }
 }
 

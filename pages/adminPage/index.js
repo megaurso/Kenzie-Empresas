@@ -1,7 +1,7 @@
 import { creatANewDepartment, deleteMyDepart, editDepartmentDescription, viewDepart } from "../../scripts/forms.js"
 import { openModal } from "../../scripts/modalDinamico.js"
 import { deleteUser, editUsers, enterpriseDepartment, listAllUsers, listDepartments, listEnterprise } from "../../scripts/requestsApi.js"
-import toast from "../../scripts/toasts.js"
+import { toast } from "../../scripts/toasts.js"
 import { verifyPermission } from "../../scripts/verifyPermission.js"
 
 const logout = document.querySelector("#logout")
@@ -144,6 +144,7 @@ async function newDepartment(){
 
 function creatRegisterUser() {
     const ul = document.querySelector("#ulRegisters")
+    users.splice(0,1)
     users.forEach((elem) => {
         const li = document.createElement("li")
         
@@ -253,5 +254,6 @@ function creatRegisterUser() {
         li.append(h2, level, nameCompany, div)
         ul.appendChild(li)
     })
+
 }creatRegisterUser()
 
