@@ -89,7 +89,7 @@ const viewDepart = async (element) => {
         allOpt.innerText = elem.username
         selectUser.append(firtsOpt,allOpt)
 
-        if(elem.department_uuid == element.department_uuid){
+        if(elem.department_uuid == element.uuid){
             const lis = document.createElement("li")
             const h3 = document.createElement("h3")
             const level = document.createElement("span")

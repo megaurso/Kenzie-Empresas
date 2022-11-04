@@ -41,7 +41,6 @@ async function selectSector() {
 
 } selectSector()
 
-
 async function renderEnterprise() {
     const enterprise = await listEnterprise()
     const divEnterprises = document.querySelector(".enterprises")
@@ -67,7 +66,6 @@ async function renderEnterprise() {
 
     })
 }
-
 
 async function renderFilterEnterprise(list) {
     

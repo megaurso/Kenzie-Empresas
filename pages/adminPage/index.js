@@ -3,10 +3,13 @@ import { openModal } from "../../scripts/modalDinamico.js"
 import { deleteUser, editUsers, enterpriseDepartment, listAllUsers, listDepartments, listEnterprise } from "../../scripts/requestsApi.js"
 import toast from "../../scripts/toasts.js"
 import { verifyPermission } from "../../scripts/verifyPermission.js"
+
 const logout = document.querySelector("#logout")
 const departments = await listDepartments()
 const users = await listAllUsers()
+
 verifyPermission()
+
 logout.addEventListener("click", () => {
     localStorage.removeItem("token")
 })
@@ -60,7 +63,6 @@ function creatDepartmentsList() {
     });
 }
 
- 
 async function selectOptions() {
     let select = document.querySelector("select")
     const enterprises = await listEnterprise()
@@ -131,7 +133,6 @@ function RenderSelectOptions(companies) {
         ul.appendChild(li)
     });
 }
-
 
 async function newDepartment(){
     const btn = document.querySelector("#creatDepartments")

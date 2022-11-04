@@ -105,7 +105,6 @@ header {
     flex-direction: column;
 }
 
-
 #noJob {
     font-weight: 700;
     font-size: var(--font-size-1);

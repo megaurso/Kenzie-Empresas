@@ -31,7 +31,6 @@
     border: none;
 }
 
-
 .formBase {
     display: flex;
     flex-direction: column;
@@ -282,6 +281,7 @@
     border-radius: 0%;
     color: rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(0, 0, 0, 0.3);
+    margin: 0;
 }
 
 #divEnterpriseBtn{
@@ -318,7 +318,6 @@
     padding-left: 10px;
 }
 
-
 #lisOfContract{
     margin-top: 20px;
     padding: 20px;
@@ -326,6 +325,7 @@
     flex-direction: column;
     gap: 5px;
 }
+
 #nameOfUser{
     text-transform: capitalize;
     font-size: var(--font-size-4);

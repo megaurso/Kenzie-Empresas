@@ -24,7 +24,6 @@ async function openModal(children){
     body.appendChild(backgroundContainer)
 }
 
-
 export{
     openModal,
 }

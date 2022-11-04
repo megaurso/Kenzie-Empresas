@@ -306,7 +306,6 @@ async function contractUser(body){
     }
 }
 
-
 export {
     listSectores,
     listEnterprise,
