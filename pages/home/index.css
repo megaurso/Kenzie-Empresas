@@ -132,7 +132,7 @@ ul{
     padding: 5px;
 }
 
-@media(min-width:768px) {
+@media(min-width:1100px) {
     main {
         display: flex;
         justify-content: center;
@@ -184,11 +184,18 @@ ul{
         width: 150px;
     }
 
-
     #imgHome {
         height: 600px;
         width: 850px;
 
+    }
+
+    #divHome{
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+        padding: 0px;
+        margin: 0px;
     }
 
     .mySelectHome {
@@ -201,16 +208,14 @@ ul{
         margin-top: 30px;
     }
 
-    ul{
-        margin-bottom: 30px;
-    }
-
     .enterprises{
         display: flex;
         flex-direction: column;
         padding-left: 15px;
         height: 531px;
         overflow-x: hidden;
+        position: relative;
+        bottom: 30px;
     }
 
     .eachEnterprise{
