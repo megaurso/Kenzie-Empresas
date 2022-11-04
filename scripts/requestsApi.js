@@ -47,8 +47,8 @@ async function login(body) {
 
         })
         const response = await request.json()
-        localStorage.setItem("token", JSON.stringify(response))
-        const isAdmin = await typeUser(response.token)
+        localStorage.setItem("token", JSON.stringify(response.token))
+        const isAdmin = await typeUser()
 
         if (isAdmin.is_admin) {
             toast("Login efetuado com sucesso", "Sendo redirecionado para página de administrador")
@@ -72,7 +72,8 @@ async function login(body) {
     }
 }
 
-async function typeUser(token) {
+async function typeUser() {
+    const token = getLocalStorage()
     try {
         const request = await fetch(`${baseUrl}auth/validate_user`, {
             headers: {
@@ -94,7 +95,7 @@ async function listDepartments() {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${token.token}`
+                "Authorization": `Bearer ${token}`
             }
         })
         const response = await request.json()
@@ -111,7 +112,7 @@ async function listAllUsers() {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${token.token}`
+                "Authorization": `Bearer ${token}`
             }
         })
         const response = await request.json()
@@ -129,7 +130,7 @@ async function enterpriseDepartment(id) {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${token.token}`
+                "Authorization": `Bearer ${token}`
             }
         })
         const response = await request.json()
@@ -146,7 +147,7 @@ async function getInfoLoggedUser() {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${token.token}`
+                "Authorization": `Bearer ${token}`
             }
         })
         const response = await request.json()
@@ -164,7 +165,7 @@ async function editUserInfo(body) {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${token.token}`
+                "Authorization": `Bearer ${token}`
             },
             body: JSON.stringify(body)
         })
@@ -182,7 +183,7 @@ async function deleteUser(id) {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${token.token}`
+            "Authorization": `Bearer ${token}`
         }
     })
 }
@@ -195,7 +196,7 @@ async function editUsers(body, id) {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${token.token}`
+                "Authorization": `Bearer ${token}`
             },
             body:JSON.stringify(body)
         })
@@ -214,7 +215,7 @@ async function listCoworkers(){
             method:"GET",
             headers:{
                 "Content-Type":"application.json",
-                "Authorization":`Bearer ${token.token}`
+                "Authorization":`Bearer ${token}`
             }
         })
         const response = await request.json()
@@ -232,7 +233,7 @@ async function departmentsOfSameEnterprise(){
             method:"GET",
             headers:{
                 "Content-Type":"application.json",
-                "Authorization":`Bearer ${token.token}`
+                "Authorization":`Bearer ${token}`
             }
         })
         const response = await request.json()
@@ -249,7 +250,7 @@ async function creatNewDepartment(body){
             method:"POST",
             headers:{
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${token.token}`
+                "Authorization": `Bearer ${token}`
             },
             body: JSON.stringify(body)
         })
@@ -267,7 +268,7 @@ async function editDepartment(body,id){
             method:"PATCH",
             headers:{
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${token.token}`
+                "Authorization": `Bearer ${token}`
             },
             body: JSON.stringify(body)
         })
@@ -284,7 +285,7 @@ async function deleteDepart(id){
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${token.token}`
+            "Authorization": `Bearer ${token}`
         }
     })
 }
@@ -296,7 +297,7 @@ async function contractUser(body){
             method:"PATCH",
             headers:{
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${token.token}`
+                "Authorization": `Bearer ${token}`
             },
             body: JSON.stringify(body)
         })
@@ -313,7 +314,7 @@ async function deleteOneUser(id){
         method:"DELETE",
         headers:{
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${token.token}`
+            "Authorization": `Bearer ${token}`
         }
     })
 }
@@ -326,7 +327,7 @@ async function outOfWWork(){
             method:"GET",
             headers:{
                 "Content-Type":"application.json",
-                "Authorization":`Bearer ${token.token}`
+                "Authorization":`Bearer ${token}`
             }
         })
         const response = await request.json()
@@ -356,5 +357,6 @@ export {
     deleteDepart,
     contractUser,
     deleteOneUser,
-    outOfWWork
+    outOfWWork,
+    typeUser
 }

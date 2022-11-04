@@ -1,8 +1,8 @@
 import { editUserForm } from "../../scripts/forms.js"
 import { openModal } from "../../scripts/modalDinamico.js"
 import { departmentsOfSameEnterprise, getInfoLoggedUser, listCoworkers } from "../../scripts/requestsApi.js"
-import { verifyPermission } from "../../scripts/verifyPermission.js"
-verifyPermission()
+import { verifyPermissionUser } from "../../scripts/verifyPermission.js"
+verifyPermissionUser()
 const userInfo = await getInfoLoggedUser()
 const coworkers = await listCoworkers()
 const sameEnterprise = await departmentsOfSameEnterprise()
