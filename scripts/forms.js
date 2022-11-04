@@ -1,4 +1,4 @@
-import { contractUser, creatNewDepartment, deleteDepart, deleteOneUser, editDepartment, editUserInfo, listAllUsers, listDepartments, listEnterprise } from "./requestsApi.js"
+import { contractUser, creatNewDepartment, deleteDepart, deleteOneUser, editDepartment, editUserInfo, listAllUsers, listDepartments, listEnterprise, outOfWWork } from "./requestsApi.js"
 import toast from "./toasts.js"
 
 let backgroundContainerModal = document.querySelector(".modalBackground")
@@ -55,6 +55,8 @@ const creatANewDepartment = async () => {
 
 const viewDepart = async (element) => {
     const allUsers = await listAllUsers()
+    const outWork = await outOfWWork()
+    
 
     const divModal = document.createElement("div")
     const nameDepart = document.createElement("h3")
@@ -67,7 +69,7 @@ const viewDepart = async (element) => {
     const enterprise = document.createElement("span")
     const btnContract = document.createElement("button")
     const ul = document.createElement("ul")
-
+    
     divModal.id = "modalViewDepart"
     nameDepart.id = "modalViewName"
     divDescriUser.id = "divUserForContract"
@@ -85,11 +87,14 @@ const viewDepart = async (element) => {
     firtsOpt.innerText = "Selecionar usuário"
     btnContract.innerText = "Contratar"
 
-    allUsers.forEach((elem) => {
+    outWork.forEach((elemen)=>{
+
         const allOpt = document.createElement("option")
-        allOpt.innerText = elem.username
-        allOpt.value = elem.uuid
+        allOpt.innerText = elemen.username
+        allOpt.value = elemen.uuid
         selectUser.append(firtsOpt, allOpt)
+    })
+    allUsers.forEach((elem) => {
         if (elem.department_uuid == element.uuid) {
             const lis = document.createElement("li")
             const h3 = document.createElement("h3")

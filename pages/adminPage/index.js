@@ -146,7 +146,7 @@ function creatRegisterUser() {
     const ul = document.querySelector("#ulRegisters")
     users.forEach((elem) => {
         const li = document.createElement("li")
-
+        
         const h2 = document.createElement("h2")
         const level = document.createElement("span")
         const nameCompany = document.createElement("p")

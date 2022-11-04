@@ -317,6 +317,24 @@ async function deleteOneUser(id){
     })
 }
 
+async function outOfWWork(){
+    const token = getLocalStorage()
+
+    try{
+        const request = await fetch(`${baseUrl}admin/out_of_work`,{
+            method:"GET",
+            headers:{
+                "Content-Type":"application.json",
+                "Authorization":`Bearer ${token.token}`
+            }
+        })
+        const response = await request.json()
+        return response
+    }catch(error){
+        console.log(error)
+    }
+}
+
 export {
     listSectores,
     listEnterprise,
@@ -336,5 +354,6 @@ export {
     editDepartment,
     deleteDepart,
     contractUser,
-    deleteOneUser
+    deleteOneUser,
+    outOfWWork
 }
