@@ -1,4 +1,5 @@
-import { creatNewDepartment, deleteDepart, deleteOneUser, editDepartment, editUserInfo, listAllUsers, listDepartments, listEnterprise } from "./requestsApi.js"
+import { contractUser, creatNewDepartment, deleteDepart, deleteOneUser, editDepartment, editUserInfo, listAllUsers, listDepartments, listEnterprise } from "./requestsApi.js"
+import toast from "./toasts.js"
 
 let backgroundContainerModal = document.querySelector(".modalBackground")
 
@@ -54,7 +55,7 @@ const creatANewDepartment = async () => {
 
 const viewDepart = async (element) => {
     const allUsers = await listAllUsers()
-    
+
     const divModal = document.createElement("div")
     const nameDepart = document.createElement("h3")
     const divDescriUser = document.createElement("div")
@@ -84,12 +85,12 @@ const viewDepart = async (element) => {
     firtsOpt.innerText = "Selecionar usuário"
     btnContract.innerText = "Contratar"
 
-    allUsers.forEach((elem)=>{
+    allUsers.forEach((elem) => {
         const allOpt = document.createElement("option")
         allOpt.innerText = elem.username
-        selectUser.append(firtsOpt,allOpt)
-
-        if(elem.department_uuid == element.uuid){
+        allOpt.value = elem.uuid
+        selectUser.append(firtsOpt, allOpt)
+        if (elem.department_uuid == element.uuid) {
             const lis = document.createElement("li")
             const h3 = document.createElement("h3")
             const level = document.createElement("span")
@@ -109,26 +110,39 @@ const viewDepart = async (element) => {
             companyName.innerText = element.companies.name
             btn.innerText = "Desligar"
 
-            btn.addEventListener("click",()=>{
-                deleteOneUser(elem.uuid) 
+            btn.addEventListener("click", () => {
+                deleteOneUser(elem.uuid)
+                toast("Usuário deletado com sucesso", "Usuário não existe mais no banco de dados")
+                setTimeout(()=>{
+                    window.location.reload()
+                },1500)
             })
 
             divBtn.append(btn)
-            lis.append(h3,level,companyName,divBtn)
+            lis.append(h3, level, companyName, divBtn)
             ul.append(lis)
         }
     })
 
-    btnContract.addEventListener("click",(event)=>{
+    btnContract.addEventListener("click", async(event) => {
         event.preventDefault()
-        console.log("oi")
+
+        let body = {
+            user_uuid:selectUser.value,
+            department_uuid:element.uuid
+        }
+        await contractUser(body)
+        toast("Usuário contratado","Usuário agora faz parte do departamento")
+        setTimeout(()=>{
+            window.location.reload()
+        },1500)
     })
 
 
-    divEnterpriseBtn.append(enterprise,btnContract)
-    divMother.append(divDescriUser,divEnterpriseBtn)
-    divDescriUser.append(descridepart,selectUser)
-    divModal.append(nameDepart,divMother,ul)
+    divEnterpriseBtn.append(enterprise, btnContract)
+    divMother.append(divDescriUser, divEnterpriseBtn)
+    divDescriUser.append(descridepart, selectUser)
+    divModal.append(nameDepart, divMother, ul)
 
     return divModal
 }
@@ -157,21 +171,19 @@ const editDepartmentDescription = async (id) => {
         const edit = {}
         const { value } = descriptionDepart
         edit.description = value
-        
-        console.log(value)
+
         await editDepartment(edit, id)
     })
-
 
     formulario.append(h3, descriptionDepart, btnEdit)
 
     return formulario
 }
 
-const deleteMyDepart = async (depart,name) =>{
+const deleteMyDepart = async (depart, name) => {
     const formulario = document.createElement("form")
     formulario.id = "formDel"
-    formulario.insertAdjacentHTML("beforeend",`
+    formulario.insertAdjacentHTML("beforeend", `
         <div id="divMaster">
         <h3 id="confirmDelete">Realmente deseja deletar o
         Departamento ${name} e demitir seus funcionários?</h3>
@@ -179,7 +191,7 @@ const deleteMyDepart = async (depart,name) =>{
         </div>
     `)
 
-    formulario.addEventListener("submit",async (event)=>{
+    formulario.addEventListener("submit", async (event) => {
         await deleteDepart(depart)
         backgroundContainerModal.remove()
     })
